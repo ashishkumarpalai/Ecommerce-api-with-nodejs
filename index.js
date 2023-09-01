@@ -5,7 +5,9 @@ const { connection } = require("./configs/db")
 const{userRouter}=require("./routes/user.routes")
 const {authenticate}=require("./middleware/auth.middleware")
 const{productRouter}=require("./routes/product.routes")
-// const{bookingRouter}=require("./routes/booking.routes")
+const{cartRouter}=require("./routes/cart.routes")
+
+
 
 const app = express()
 
@@ -22,8 +24,11 @@ app.use("/",userRouter)
 //product details
 app.use("/product",productRouter)
 
+//cart details
+app.use("/cart",cartRouter)
+
 //authentication
-app.use(authenticate)
+// app.use(authenticate)
 
 app.get("/a", async (req, res) => {
     res.send("wellcome to Ecommerce backend")
